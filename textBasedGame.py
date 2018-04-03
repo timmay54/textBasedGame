@@ -24,6 +24,32 @@ def game_main()
 	else
 		print("You need help? Probaby should ask for some...")
 
+
+dict_places {
+	
+	"kitchen" : 1 ,
+	"bathroom" : 2 ,
+	"living room" : 3 ,
+	"stairs2" : 4 ,
+	"stairs3" : 5 , 
+	"attic" : 6, 
+	"tiny pink room" : 7 ,
+	"angry man's room" : 8 ,
+	"business man's room" : 9 , 
+	"the pig man's room" : 10 , 
+	"the best man's room" : 11 ,
+	"front door" : 12 
+}
+
+dict_startmenu {
+	"Start" : 1 ,
+	"How to play" : 2 ,
+	"Puss the fuck out" : 3 ,
+}
+
+
+"""This is the start menu of the game. This block runs first."""
+
 print ("Welcome to _________!")
 ans = input("1. Start\n2.How to play\n3.Puss the fuck out")
 if (ans==1)
