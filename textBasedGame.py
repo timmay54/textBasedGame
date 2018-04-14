@@ -75,7 +75,7 @@ dict_player_items = {
 
 dict_startmenu = {
 	"one" : game_main           ,
-	"2" :"How to play"        ,
+	"2" : "How to play"        ,
 	"3" : "Puss the fuck out"   ,
 }
 
@@ -83,9 +83,9 @@ dict_startmenu = {
 """This is the start menu of the game. This block runs first."""
 def start_menu():
 	print ("Welcome to _________!")
-	ans = input("1.Start\n2.How to play\n3.Puss the fuck out\n\n")
+	ans = input("1. Start\n2. How to play\n3. Puss the fuck out\n\n")
 	try:
-		dict_startmenu[ans]
+		print ( dict_startmenu[ans] )
 	except Exception as e:
 		print("fatal error in start block!")
 	else:
