@@ -1,7 +1,8 @@
 TITLE
 
-A simple text based game written in elementary python. Instead of using a "case-switch" structure, all input decisions
-go to a dictionary handing block. All inputs are keys in the dictionary, saving the time to copy and paste all repeated code, and making changes more recursive**. 
+A simple text based game written in elementary python. Instead of using a "case-switch" structure, 
+all input decisions go to a dictionary handing block. All inputs are keys in the dictionary, saving 
+the time to copy and paste all repeated code, and making changes more recursive**. 
 
 
 +++put game description here+++
