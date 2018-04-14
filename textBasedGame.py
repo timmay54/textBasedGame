@@ -74,9 +74,9 @@ dict_player_items = {
 }
 
 dict_startmenu = {
-	1 : game_main            ,
-	2 : print ("How to play")     ,
-	3 : "Puss the fuck out"   
+	"one" : game_main           ,
+	"2" :"How to play"        ,
+	"3" : "Puss the fuck out"   ,
 }
 
 
@@ -90,3 +90,5 @@ def start_menu():
 		print("fatal error in start block!")
 	else:
 		print("else block in start block has been reached.")
+
+start_menu()
