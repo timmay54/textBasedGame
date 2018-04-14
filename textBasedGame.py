@@ -19,6 +19,28 @@ Needs to be connected to the dictionary for the players' items.
 
 """
 
+"""   GAME BLOCK    """
+def game_main():
+	startGame = True
+	lives = 3
+	itemMAX = len(dict_player_items) 
+	response = input("You are standing in a kitchen, dazed and confused.")
+	
+	while (response != "quit"):
+		try:
+			if (response == "smoke weed"):
+				print("holy fuck you just won the universe")
+				break
+			elif(response=="help"):
+				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
+			else:
+				print("You need help? Probaby should ask for some...")
+		except Exception as e:
+			print("Fatal error has occurred!\a")
+		else:
+			print ("You should ask for 'help'.")
+
+
 
 dict_places = {
 	
@@ -68,31 +90,3 @@ except Exception as e:
 	print("fatal error in start block!")
 else:
 	print("else block in start block has been reached.")
-	
-
-
-
-
-"""   GAME BLOCK    """
-def game_main():
-	startGame = True
-	lives = 3
-	itemMAX = len(dict_player_items) 
-	response = input("You are standing in a kitchen, dazed and confused.")
-	
-	while (response != "quit"):
-		try:
-			if (response == "smoke weed"):
-				print("holy fuck you just won the universe")
-
-			elif(response=="help"):
-				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
-			else:
-				print("You need help? Probaby should ask for some...")
-		except Exception as e:
-			print("Fatal error has occurred!\a")
-		else:
-			print ("You should ask for 'help'.")
-
-
-
