@@ -3,10 +3,11 @@ Text based game written in python
 
 began writting on 3/31/2018 @ 12:14 AM 
 
-This game focuses on choosing wich tools are the handiest in the wrong run.
+This game focuses on choosing wich tools/items are the handiest in the long run.
 
 CONTROLS:
-
+planning to have each menu be a numbered item. Some items will be harder to find, and the 
+player will have to just know the number since it wont be listed (like a cheat code).
 
 
 
@@ -15,7 +16,7 @@ CONTROLS:
 
 TO DO -
 
-Needs to be connected to the dictionary for the players' items.
+itemMAX needs to be connected to the dictionary for the players' items.
 
 """
 
@@ -25,7 +26,6 @@ def game_main():
 	lives = 3
 	itemMAX = len(dict_player_items) 
 	response = input("You are standing in a kitchen, dazed and confused.")
-	
 	while (response != "quit"):
 		try:
 			if (response == "smoke weed"):
@@ -55,7 +55,7 @@ dict_places = {
 	9  : "business man's room" , 
 	10 : "the pig man's room"  , 
 	11 : "the best man's room" ,
-	12 : "front door"   
+	12 : "front door"          , 
 }
 
 dict_kitchen = {
@@ -74,19 +74,19 @@ dict_player_items = {
 }
 
 dict_startmenu = {
-	1 : game_main()          ,
-	2 : print ("How to play")        ,
+	1 : game_main            ,
+	2 : print ("How to play")     ,
 	3 : "Puss the fuck out"   
 }
 
 
 """This is the start menu of the game. This block runs first."""
-
-print ("Welcome to _________!")
-ans = input("1.Start\n2.How to play\n3.Puss the fuck out\n\n")
-try:
-	dict_startmenu[ans]
-except Exception as e:
-	print("fatal error in start block!")
-else:
-	print("else block in start block has been reached.")
+def start_menu():
+	print ("Welcome to _________!")
+	ans = input("1.Start\n2.How to play\n3.Puss the fuck out\n\n")
+	try:
+		dict_startmenu[ans]
+	except Exception as e:
+		print("fatal error in start block!")
+	else:
+		print("else block in start block has been reached.")

@@ -17,4 +17,4 @@ using Wild west as house (Facing south)
 Working on:
 number of lives
 four items maximum until backpack is found
-possibly stats included??
+possibly stats for players included??
