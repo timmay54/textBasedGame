@@ -20,6 +20,9 @@ itemMAX needs to be connected to the dictionary for the players' items.
 
 """
 
+import platform
+
+
 """   GAME BLOCK    """
 def game_main():
 	startGame = True
@@ -74,9 +77,9 @@ dict_player_items = {
 }
 
 dict_startmenu = {
-	"one" : game_main           ,
-	"2" : "How to play"        ,
-	"3" : "Puss the fuck out"   ,
+	"1"   : game_main           ,
+	"2"   : "How to play"        ,
+	"3"   : "Puss the fuck out"   ,
 }
 
 
@@ -84,8 +87,18 @@ dict_startmenu = {
 def start_menu():
 	print ("Welcome to _________!")
 	ans = input("1. Start\n2. How to play\n3. Puss the fuck out\n\n")
+	print ( platform.platform() )
+	print ( platform.system()   )
+	print ( platform.release()  )
+	print ( platform.version()  )
+
 	try:
-		print ( dict_startmenu[ans] )
+		if (ans == 1):
+			dict_startmenu[ans] #######needs variable replacement w/ ())
+		elif (ans == 2):
+			print (dict_startmenu[2])
+		elif (ans == 3):
+			print (dict_startmenu[3])
 	except Exception as e:
 		print("fatal error in start block!")
 	else:
