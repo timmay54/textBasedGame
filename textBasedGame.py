@@ -10,50 +10,32 @@ planning to have each menu be a numbered item. Some items will be harder to find
 player will have to just know the number since it wont be listed (like a cheat code).
 
 
-
-
-
-
 TO DO -
 
 itemMAX needs to be connected to the dictionary for the players' items.
+
+Add a timer, and it will save the lowest time of who completes the game the fastest
 
 """
 
 import platform
 
 
-"""   GAME BLOCK    """
-def game_main():
-	startGame = True
-	lives = 3
-	itemMAX = len(dict_player_items) 
-	response = input("You are standing in a kitchen, dazed and confused.")
-	while (response != "quit"):
-		try:
-			if (response == "smoke weed"):
-				print("holy fuck you just won the universe")
 
-			elif(response=="help"):
-				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
-			else:
-				print("You need help? Probaby should ask for some...")
-		except Exception as e:
-			print("Fatal error has occurred!\a")
-		else:
-			print ("You should ask for 'help'.")
+"""
+These are objects that will be called throughout the game
 
-
+"""
 
 dict_places = {
 	
-	1  : "kitchen"        ,
-	2  : "bathroom"       ,
-	3  : "living room"    ,
-	4  : "stairs2"         ,
-	5  : "stairs3"          , 
-	6  : "attic"             , 
-	7  : "tiny pink room"     ,
+	1  : "kitchen"             ,
+	2  : "bathroom"            ,
+	3  : "living room"         ,
+	4  : "stairs2"             ,
+	5  : "stairs3"             , 
+	6  : "attic"               , 
+	7  : "tiny pink room"      ,
 	8  : "angry man's room"    ,
 	9  : "business man's room" , 
 	10 : "the pig man's room"  , 
@@ -76,32 +58,59 @@ dict_player_items = {
 
 }
 
-dict_startmenu = {
+"""dict_startmenu = {
 	"1"   : game_main           ,
 	"2"   : "How to play"        ,
 	"3"   : "Puss the fuck out"   ,
-}
+} 
+"""
 
+"""   GAME BLOCK    """
+def game_main():
+	startGame = True
+	lives = 3
+	itemMAX = len(dict_player_items) 
+	response = input("You are standing in a kitchen, dazed and confused.")
+	while (response != "quit"):
+		try:
+			if (response == "smoke weed"):
+				print("holy fuck you just won the universe")
+
+			elif(response=="help"):
+				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
+			else:
+				print("You need help? Probaby should ask for some...")
+		except Exception as e:
+			print("Fatal error has occurred!\a")
+		else:
+			print ("You should ask for 'help'.")
 
 """This is the start menu of the game. This block runs first."""
+
 def start_menu():
-	print ("Welcome to _________!")
-	ans = input("1. Start\n2. How to play\n3. Puss the fuck out\n\n")
 	print ( platform.platform() )
 	print ( platform.system()   )
 	print ( platform.release()  )
 	print ( platform.version()  )
+	print ("This is determining your computer type and brand")
+
+	print ("Welcome to _________!")
+	ans = input("1. Start\n2. How to play\n3. Puss the fuck out\n\n")
+
+	print ("\nYou have entered " + ans) 
 
 	try:
-		if (ans == 1):
-			dict_startmenu[ans] #######needs variable replacement w/ ())
+		if (ans == 1 or ans == "1"):
+			game_main()
 		elif (ans == 2):
 			print (dict_startmenu[2])
 		elif (ans == 3):
 			print (dict_startmenu[3])
+		else:
+			print("*****else block")
+
 	except Exception as e:
-		print("fatal error in start block!")
-	else:
-		print("else block in start block has been reached.")
+		print("fatal error in start block")
+	
 
 start_menu()
