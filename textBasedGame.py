@@ -91,8 +91,8 @@ def game_main():
 				print("holy fuck you just won the universe\n")
 				#play audio OOOHHHH FUCCKKK mlg
 				"""for num in range(0,10000):
-					playerScore = playerScore + 100
-					print(playerScore)"""
+					playerScore = playerScore + 100"""
+				print("Look at your score!!! " and playerScore)
 					
 				gameEnd = True
 				startGame = False #Probably dont need both of these...
