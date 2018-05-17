@@ -18,8 +18,12 @@ Add a timer, and it will save the lowest time of who completes the game the fast
 
 """
 
-import platform
+import platform, time, os
 
+playerScore = 0
+startGame = True
+endGame = False
+lives = 3
 
 
 """
@@ -65,25 +69,49 @@ dict_player_items = {
 } 
 """
 
+
+
+def endGameStats():
+	#subtract end time from start time.
+	#create file (if file doesn't already exist)
+	#scan to see if the user's current time is better than any of the top ten
+	#if yes, then replace user's time with that number, and shift all worse times down the list
+	print('you lost, you suck!')
+
 """   GAME BLOCK    """
 def game_main():
-	startGame = True
-	lives = 3
-	itemMAX = len(dict_player_items) 
-	response = input("You are standing in a kitchen, dazed and confused.")
+
+	itemMAX = len(dict_player_items)
+	response = "boobs"
 	while (response != "quit"):
 		try:
+			response = input("You are standing in a kitchen, dazed and confused.\n")
+			
 			if (response == "smoke weed"):
-				print("holy fuck you just won the universe")
+				print("holy fuck you just won the universe\n")
+				#play audio OOOHHHH FUCCKKK mlg
+				"""for num in range(0,10000):
+					playerScore = playerScore + 100
+					print(playerScore)"""
+					
+				gameEnd = True
+				startGame = False #Probably dont need both of these...
+				break
 
 			elif(response=="help"):
 				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
+				enter = input("Press enter to continue")
+
 			else:
 				print("You need help? Probaby should ask for some...")
+				#pause here
+
 		except Exception as e:
 			print("Fatal error has occurred!\a")
 		else:
 			print ("You should ask for 'help'.")
+
+
 
 """This is the start menu of the game. This block runs first."""
 
@@ -93,6 +121,7 @@ def start_menu():
 	print ( platform.release()  )
 	print ( platform.version()  )
 	print ("This is determining your computer type and brand")
+	startGame = False
 
 	print ("Welcome to _________!")
 	ans = input("1. Start\n2. How to play\n3. Puss the fuck out\n\n")
@@ -101,7 +130,7 @@ def start_menu():
 
 	try:
 		if (ans == 1 or ans == "1"):
-			game_main()
+			startGame = True
 		elif (ans == 2):
 			print (dict_startmenu[2])
 		elif (ans == 3):
@@ -112,5 +141,15 @@ def start_menu():
 	except Exception as e:
 		print("fatal error in start block")
 	
+"""
+Main Block
+"""
+
+
 
 start_menu()
+
+if startGame == True:
+	game_main()
+elif (startGame == False) and  (endGame == True):
+	endGameStats()
