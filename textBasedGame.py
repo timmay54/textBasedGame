@@ -25,58 +25,59 @@ find a pattern that works for clearing teriminal by setting a variable based on 
 
 """
 import platform, time, os
+import extraFunctions as aa
 
 playerScore = 0
-startGame = True
-endGame = False
+continueGame = False
 lives = 3
 
-import platform #this is for determining the computer running the file
-import time
 
 """
 These are objects that will be called throughout the game
 
 """
 
-dict_places = {
-
-	1  : "kitchen"             ,
-	2  : "bathroom"            ,
-	3  : "living room"         ,
-	4  : "stairs2"             ,
-	5  : "stairs3"             ,
-	6  : "attic"               ,
-	7  : "tiny pink room"      ,
-	8  : "angry man's room"    ,
-	9  : "business man's room" ,
-	10 : "the pig man's room"  ,
+kitchenMenu = {
+	1  : "Kitchen"             ,
+	#2  : "bathroom"            ,
+	3  : "Living Room"         ,
+	14 : "stairs1"             ,
+	#4  : "stairs2"             ,
+	#5  : "stairs3"             ,
+	#6  : "attic"               ,
+	#7  : "tiny pink room"      ,
+	#8  : "angry man's room"    ,
+	#9  : "business man's room" ,
+	#10 : "the pig man's room"  ,
 	11 : "the best man's room" ,
-	12 : "front door"          ,
-}
-
-dict_kitchen = {
-
+	#12 : "front door"          ,
 	"fridge"     : "You see some old ham, beer in the drawers, and jello shots." ,
 	"cupboards"  : "Ramen, egg noodles, and jarred stuff from the business man." ,
 	"Closet"     : "a red cooler, backpack, broom, and extra lightbulbs."
-
 }
+
+livingRoomMenu = {
+	1 : "Front Door"         ,
+	2 : "stairs2"            ,
+	3 : "the best man's room",
+	4 : "Kitchen"            ,
+}
+def livingRoom():
+	try:
+		print("You are standing in the living room. There is a bag hanging from the ceiling fan.")
+		print(livingRoomMenu)
+		ansLR = input()
+
+		if (ansLR == 1):
+			game_main()
+
+	except Exception as e:
+		print("Input did not match any options, idiot.")
 
 dict_player_items = {
-
-
+	#phone maybe???
+	2 : "45$"
 }
-
-"""
-dict_startmenu = {
-	"1"   : game_main           ,
-	"2"   : "How to play"        ,
-	"3"   : "Quit"   ,
-}
-"""
-
-
 
 def endGameStats():
 	#subtract end time from start time.
@@ -85,35 +86,39 @@ def endGameStats():
 	#if yes, then replace user's time with that number, and shift all worse times down the list
 
 	#could add a variable below that determines what gets printed, between you suck, you have completed the game, and something awesome.
-	print('you lost, you suck!')
+	if playerScore>10:
+		print("Well, you atleast did okay.")
+		print(playerScore)
 
-"""   GAME BLOCK    """
+	elif playerScore<10:
+		print("you lost, you suck!")
 
 def game_main():
 
 	itemMAX = len(dict_player_items)
 	response = "boobs"
-	while (response != "quit"):
+	while ((response != "quit") ): # & (continueGame == True)
 		try:
-			response = input("You are standing in a kitchen, dazed and confused.\n")
+			print("You are standing in a kitchen, dazed and confused.\n")
+			print(kitchenMenu)
+			response = input()
 
 			if (response == "smoke weed"):
-				print("holy fuck you just won the universe\n")
+				print("Holy fuck you just won the universe.\n")
 				#play audio OOOHHHH FUCCKKK mlg
 				"""for num in range(0,10000):
 					playerScore = playerScore + 100"""
-				print("Look at your score!!! %d", playerScore)
+				print("Look at your score!!!", playerScore)
+				continueGame = False
+				return
 
-				gameEnd = True
-				startGame = False #Probably dont need both of these...
-				break
+			  #use a REGEX here to see if response has the
+			  #words "living room" in it, which would eliminate a bunch of "or's"
+			elif(response == "living room") or (response == "go to living room") or (response == 3):
+				livingRoom()
 
-			elif(response == "living room") or (response == "go to living room"): #use a REGEX here to see if response has the words "living room" in it, which would eliminate a bunch of "or's"
-				print("You are standing in the living room. There is a bag hanging from the ceiling fan.")
-
-			elif(response == "help"):
-				print("You can: \nDrink water\nWalk outside\nLook in fridge\nCall someone on your phone.")
-				enter = input("Press enter to continue")
+			elif(response == "stairs1") or (response == "go to stairs1") or (response == "14") or (response == 14):
+				aa.stairs1()
 
 			else:
 				print("You need help? Probaby should ask for some...")
@@ -124,40 +129,36 @@ def game_main():
 		else:
 			print ("You should ask for 'help'.")
 
-def start_menu():
+def start_menu():                  #This probably doesnt need to be inside a funtion block lol
 	print ( platform.platform() )
 	print ( platform.system()   )
 	print ( platform.release()  )
 	print ( platform.version()  )
-	print ("This is determining your computer type and brand")
+	print ("This is determining your computer type and brand.")
 
 	print ("Welcome to _________!")
-	ans = int(input("1. Start\n2. How to play\n3. Quit\n\n") ) ###had to change this for online purposes LOL
+	ans = int(input("1. Start\n2. How to play\n3. Quit\n\n") )
 
 	print ("\nYou have entered", ans)
 
 	try:
 		if (ans == 1 or ans == "1"):
-			startGame = True
-		elif (ans == 2):
+			game_main()
+		elif (ans == 2 or ans == "2"):
 			print (dict_startmenu[2])
 		elif (ans == 3 or ans == "3"):
 			print (dict_startmenu[3])
+			return
 		else:
-			print("*****else block")
+			print("*else block*")
 
 	except Exception as e:
 		print("fatal error in start block")
 
-"""
-Main Block
-"""
-
-
 
 start_menu()
 
-if startGame == True:
+if continueGame == True:
 	game_main()
-elif (startGame == False) and  (endGame == True):
+elif continueGame == False:
 	endGameStats()
